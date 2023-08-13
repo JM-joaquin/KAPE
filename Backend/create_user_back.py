@@ -2,6 +2,7 @@ from app import app
 from utils.db import db
 from models.user_back import User
 from datetime import datetime
+import bcrypt
 
 def create_users():
     with app.app_context():
@@ -29,7 +30,7 @@ def create_users():
                 contrasena = input("Contrasenia: ")
     
             fecha_registro = datetime.now()
-
+            
             user = User(nombre_usuario=nombre_usuario, correo=correo, contrasena=contrasena, fecha_registro=fecha_registro)
             db.session.add(user)
             
